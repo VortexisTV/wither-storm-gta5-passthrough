@@ -1,0 +1,83 @@
+plugins {
+	id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+	id 'org.spongepowered.mixin' version '0.7.+'
+}
+
+base {
+	archivesName = 'passthrough-forge'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+	mappings channel: 'official', version: project.minecraft_version
+	copyIdeResources = true
+	runs {
+		configureEach {
+			workingDirectory project.file('run')
+			property 'forge.logging.console.level', 'info'
+			mods {
+				passthrough {
+					source sourceSets.main
+				}
+			}
+		}
+		// dev client: a fixed window size so the camera/projection maths is easy to check
+		client {
+			args '--width', '1920', '--height', '1080'
+		}
+	}
+}
+
+mixin {
+	add sourceSets.main, 'passthrough.refmap.json'
+	config 'passthrough.mixins.json'
+	// into Cracker's Wither Storm Mod; its plugin switches them off when that mod isn't installed
+	config 'passthrough.storm.mixins.json'
+}
+
+repositories {
+	// the Wither Storm mod isn't on a maven: it is picked up as a file, and remapped to dev names by fg.deobf
+	flatDir { dirs project.witherstorm_dir }
+}
+
+dependencies {
+	minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+	annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+	// the storm bridge (StormBridge and friends) is only loaded when the mod is present at run time
+	compileOnly fg.deobf("blank:witherstormmod:${project.witherstorm_version}:all")
+}
+
+processResources {
+	def props = [version: project.version, minecraft_version: project.minecraft_version]
+	inputs.properties props
+	filesMatching('META-INF/mods.toml') { expand props }
+}
+
+jar {
+	manifest {
+		attributes([
+			'Specification-Title': 'passthrough',
+			'Specification-Version': '1',
+			'Implementation-Title': 'Passthrough (Forge)',
+			'Implementation-Version': project.version,
+			'MixinConfigs': 'passthrough.mixins.json,passthrough.storm.mixins.json'
+		])
+	}
+	finalizedBy 'reobfJar'
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+}
+
+// Decompiled, Forge-patched Minecraft sources (what an IDE import would fetch), to read injection points from:
+// prints the path of the sources jar.
+tasks.register('mcSources') {
+	doLast {
+		def mapped = "${project.minecraft_version}-${project.forge_version}_mapped_official_${project.minecraft_version}"
+		def cfg = configurations.detachedConfiguration(dependencies.create("net.minecraftforge:forge:${mapped}:sources"))
+		cfg.transitive = false
+		cfg.resolve().each { println "sources: ${it}" }
+	}
+}

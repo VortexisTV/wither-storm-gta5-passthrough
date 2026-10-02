@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "dev.rehan.passthrough.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"refmap": "passthrough.refmap.json",
+	"mixins": ["ExplosionMixin", "LevelMixin", "MobMixin", "PlayerMixin", "PortalMixin", "ProjectileInvoker", "ProjectileMixin", "ServerPlayerMixin"],
+	"client": [
+		"client.AbstractClientPlayerMixin", "client.CameraMixin", "client.ClientLevelMixin", "client.EntityPickMixin", "client.GameRendererMixin",
+		"client.ItemInHandLayerMixin", "client.KeyMappingAccessor", "client.LevelRendererMixin", "client.LivingEntityMixin", "client.LocalPlayerMixin",
+		"client.PlayerRendererMixin", "client.ToastComponentMixin"
+	],
+	"injectors": { "defaultRequire": 1 }
+}

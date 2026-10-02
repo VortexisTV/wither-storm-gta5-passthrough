@@ -1,0 +1,11 @@
+{
+	"required": false,
+	"minVersion": "0.8",
+	"package": "dev.rehan.passthrough.storm.mixin",
+	"plugin": "dev.rehan.passthrough.storm.mixin.StormMixinPlugin",
+	"compatibilityLevel": "JAVA_17",
+	"refmap": "passthrough.refmap.json",
+	"mixins": ["WitherStormEntityMixin"],
+	"client": ["PlayerCameraShakerMixin", "PostProcessingShadersMixin"],
+	"injectors": { "defaultRequire": 1 }
+}

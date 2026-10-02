@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="passthrough"
+version="${version}"
+displayName="Passthrough"
+authors="rehan"
+description='''
+Runs alongside another game: its camera drives Minecraft's, its collision becomes invisible blocks, and Minecraft's
+picture (colour + depth) is handed back to be composited into the host game. This Forge 1.20.1 build also carries
+Cracker's Wither Storm into the host: what the storm pulls, eats and blows up happens to the host's world.
+'''
+
+[[dependencies.passthrough]]
+	modId="forge"
+	mandatory=true
+	versionRange="[47,)"
+	ordering="NONE"
+	side="BOTH"
+
+[[dependencies.passthrough]]
+	modId="minecraft"
+	mandatory=true
+	versionRange="[${minecraft_version}]"
+	ordering="NONE"
+	side="BOTH"
+
+[[dependencies.passthrough]]
+	modId="witherstormmod"
+	mandatory=false
+	versionRange="[4.2,)"
+	ordering="AFTER"
+	side="BOTH"
