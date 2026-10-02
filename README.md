@@ -36,11 +36,33 @@ Download [Cracker's Wither Storm Mod](https://www.curseforge.com/minecraft/mc-mo
 
 ## Build and install
 
+### 1. Clone the repo:
+
+```bash
+git clone https://github.com/VortexisTV/wither-storm-gta5-passthrough.git
+```
+
 Keep the checkout on a Windows drive, such as `C:\Projects\wither-storm-gta-passthrough`, so Windows Java and MSVC can build it. The commands below run from the repository root unless stated otherwise.
 
-### 1. Build the Forge bridge
+### 2. Build the Forge bridge
 
-Set `JAVA_HOME` to your JDK 17 directory. Create `mc-forge/libs/` and put the downloaded storm mod JAR there, then run in PowerShell:
+Set `JAVA_HOME` to your JDK 17 directory. 
+
+- Find your JDK folder path (for example: ``C:\Program Files\Java\jdk-17``). 
+
+- Open the Start menu, type environment variables, and select Edit the system environment variables.
+
+- Click the Environment Variables button.
+
+- Under System variables, click New.
+
+- Enter JAVA_HOME as the variable name and paste your JDK path as the value.
+
+- Edit the Path variable in System variables and add ``C:\Program Files\Java\jdk-17``.
+
+- Click OK to save and restart your command prompt.
+
+Create `mc-forge/libs/` and put the downloaded storm mod JAR there, then run in PowerShell:
 
 ```powershell
 cd mc-forge
