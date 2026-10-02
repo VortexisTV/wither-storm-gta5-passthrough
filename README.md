@@ -27,7 +27,7 @@ This is a modified build of [Rehan's Minecraft–GTA V passthrough example](http
 | Java | **JDK 17** for the Forge build and launcher instance |
 | GTA scripting | [ScriptHookV and its ASI loader](https://www.dev-c.com/gtav/scripthookv/), compatible with your installed GTA build |
 | Compositor | [ReShade 6.8.0 with full add-on support](https://reshade.me/) |
-| C++ build | Visual Studio / Build Tools with Desktop development with C++, MSVC x64, and Windows SDK |
+| C++ build | x64 Native Tools Command Prompt for Visual Studio 2022 / Build Tools with Desktop development with C++, MSVC x64, and Windows SDK |
 | Dependency/install scripts | WSL with Bash, `curl`, and `unzip`; `rsync` if using a separate Windows build mirror |
 
 Use Story Mode with BattlEye disabled. ScriptHookV does not support [GTA Online](https://www.dev-c.com/gtav/scripthookv/). GTA V Enhanced is not the target of this build.
