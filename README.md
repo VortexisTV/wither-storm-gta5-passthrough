@@ -82,7 +82,7 @@ cd ..
 
 Create a dedicated Minecraft 1.20.1 instance with Forge 47.4.10. Put **both** the bridge JAR and the storm mod JAR in that instance's `mods` folder. Use Java 17 for that instance. A dedicated instance matters because the bridge creates/opens a creative void world called `passthrough` and adjusts Minecraft's graphics and focus settings.
 
-### 2. Fetch GTA dependencies and build the plugin
+### 3. Fetch GTA dependencies and build the plugin
 
 In WSL, change to the repository on the Windows drive, then run:
 
@@ -100,7 +100,7 @@ In PowerShell:
 
 The result is `gta/build/MCPassthrough.asi`. It contains both the ScriptHookV script and the ReShade add-on.
 
-### 3. Install into GTA V Legacy
+### 4. Install into GTA V Legacy
 
 Close GTA before installing. For a complete first installation, run from WSL, replacing the example with your own game directory:
 
@@ -118,7 +118,7 @@ For later updates to an installation that already has ScriptHookV, the ASI loade
 
 This PowerShell helper updates only `MCPassthrough.asi` and `MCPassthrough.fx` and keeps a backup. It also accepts `-Restore` with a backup directory.
 
-### 4. Run
+### 5. Run
 
 1. Start the dedicated Forge instance. Let it load the `passthrough` world.
 2. Leave Minecraft running in the background with its window open.
