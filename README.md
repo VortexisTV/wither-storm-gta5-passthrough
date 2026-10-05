@@ -1,5 +1,7 @@
 # Wither Storm × GTA V Passthrough
 
+## "Nothing built can last forever."
+
 Run **Minecraft Java 1.20.1 with Cracker's Wither Storm Mod** alongside **GTA V Legacy**, and bring the actual Minecraft storm into Los Santos. Minecraft renders and simulates the storm; the bridge draws it into GTA's view and makes GTA's people and vehicles react to what it does.
 
 This is a modified build of [Rehan's Minecraft–GTA V passthrough example](https://github.com/rehan-remade/universal-modder/tree/main/examples/minecraft-gta5-passthrough), from [universal-modder](https://github.com/rehan-remade/universal-modder). This adaptation adds **Forge 1.20.1, Cracker's Wither Storm Mod integration, and GTA NPC/vehicle interaction with the storm**. The original Fabric code is also included in `mc/`.
